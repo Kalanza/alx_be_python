@@ -6,19 +6,29 @@ time_bound = input("Is it time-bound? (yes/no): ").lower()
 # Process task based on priority and time sensitivity
 match priority:
     case "high":
+        reminder = f"'{task}' is a high priority task"
         if time_bound == "yes":
-            print(f"\nReminder: '{task}' is a high priority task that requires immediate attention today!")
+            reminder += " that requires immediate attention today!"
         else:
-            print(f"\nReminder: '{task}' is a high priority task. Please address it soon.")
+            reminder += "."
     case "medium":
+        reminder = f"'{task}' is a medium priority task"
         if time_bound == "yes":
-            print(f"\nReminder: '{task}' is a medium priority task that should be completed today.")
+            reminder += " that should be completed today."
         else:
-            print(f"\nReminder: '{task}' is a medium priority task. Consider completing it this week.")
+            reminder += "."
     case "low":
+        reminder = f"'{task}' is a low priority task"
         if time_bound == "yes":
-            print(f"\nNote: '{task}' is a low priority task but has a time constraint. Try to complete it when possible.")
+            reminder += " with a time constraint."
         else:
-            print(f"\nNote: '{task}' is a low priority task. Consider completing it when you have free time.")
+            reminder += "."
     case _:
-        print("\nInvalid priority level entered. Please use high, medium, or low.")
+        reminder = "Invalid priority level entered. Please use high, medium, or low."
+
+# Print the customized reminder
+if priority in ["high", "medium", "low"]:
+    action_required = " Immediate action is required!" if (priority == "high" and time_bound == "yes") else ""
+    print(f"\nReminder: {reminder}{action_required}")
+else:
+    print(f"\n{reminder}")
