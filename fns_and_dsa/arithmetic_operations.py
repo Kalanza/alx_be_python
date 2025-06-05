@@ -1,4 +1,4 @@
-def perform_operation(num1: float, num2: float, operation: str):
+def perform_operation(num1, num2, operation):
     if operation == 'add':
         return num1 + num2
     elif operation == 'subtract':
@@ -10,6 +10,6 @@ def perform_operation(num1: float, num2: float, operation: str):
             raise ValueError('Cannot divide by zero.')
         return num1 / num2
     else:
-        raise ValueError("Invalid operation.Choose from 'add', 'subtract', 'multiply' or, 'divide'" )
-    
-perform_operation(10.25,5.75,'add')
+        raise ValueError("Invalid operation. Choose from 'add', 'subtract', 'multiply', or 'divide'.")
+
+perform_operation(10.25, 5.75, 'add')
