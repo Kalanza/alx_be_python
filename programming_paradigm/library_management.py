@@ -15,24 +15,24 @@ class Book:
 
 class Library:
     def __init__(self):
-        self.books = []  # Using self.books instead of self._books
+        self._books = []  # Using private convention with underscore
     
     def add_book(self, book):
-        self.books.append(book)
+        self._books.append(book)
     
     def check_out_book(self, title):
-        for book in self.books:
+        for book in self._books:
             if book.title == title and not book.is_checked_out():
                 book.check_out()
                 return True
         return False
     
     def return_book(self, title):
-        for book in self.books:
+        for book in self._books:
             if book.title == title and book.is_checked_out():
                 book.return_book()
                 return True
         return False
     
     def list_available_books(self):
-        return [book for book in self.books if not book.is_checked_out()]
+        return [book for book in self._books if not book.is_checked_out()]
